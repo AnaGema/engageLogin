@@ -1,0 +1,32 @@
+.card-container-styles {
+    width: 75%;
+    border-radius: 20px;
+    margin-left: 10%;
+}
+.data-container {
+    margin-top: 5%;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 20px;
+    width: 48%;
+}
+.data-title{
+    font-weight: bold;
+    font-size: 18pt;
+}
+label{
+    font-weight: bold;
+}
+.update-btn{
+    float: right;
+}
+.twin-containers {
+    display: flex;
+}
+.user-roles-table {
+    margin-top: 10%;
+}
+
+table{
+    border-radius: 5px;
+}
