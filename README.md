@@ -14,3 +14,4 @@ admin@a.a => admin@1234
 ana@a.a => ana@1234
 paul@p.p => paul@1234
 
+Database credentials can be found in .env file.
