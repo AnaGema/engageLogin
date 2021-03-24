@@ -15,3 +15,7 @@ ana@a.a => ana@1234
 paul@p.p => paul@1234
 
 Database credentials can be found in .env file.
+
+I've done a mix of Eloquent queries and stored procedures, you can see those in the database copy I've attached.
+
+Thanks!
