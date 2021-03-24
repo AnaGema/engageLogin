@@ -65,26 +65,6 @@ class ProfileController extends Controller
     }
 
     /**
-     * Validates the data sent in the request
-     *
-     * @param array $data
-     * @param array $request
-     * @return bool|JsonResponse
-     */
-    protected function validateRequest(array $data, array $request)
-    {
-        $validator = Validator::make($request, $data);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'error',
-                'data'   => $validator->getMessageBag()->getMessages()
-            ]);
-        }
-        return true;
-    }
-
-    /**
      * Updates the current logged user
      *
      * @param Request $request
@@ -93,7 +73,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $payload = $request->all();
-        $validator = $this->validateRequest($request->all(),[
+        $validator = Validator::make($request->all(), [
             'name'      => ['required', 'string'],
             'gender'    => ['string'],
             'address'   => ['string'],
@@ -103,8 +83,11 @@ class ProfileController extends Controller
             'about_me'  => ['string', 'max:255']
         ]);
 
-        if ($validator !== true){
-            return $validator;
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'data'   => $validator->getMessageBag()->getMessages()
+            ]);
         }
 
         unset($payload['_token']);
@@ -165,12 +148,15 @@ class ProfileController extends Controller
     public function updateUserRole(Request $request)
     {
         $payload = $request->all();
-        $validator = $this->validateRequest($request->all(),[
+        $validator = Validator::make($request->all(), [
             'roles' => ['required', 'array']
         ]);
 
-        if ($validator !== true){
-            return $validator;
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'data'   => $validator->getMessageBag()->getMessages()
+            ]);
         }
 
         unset($payload['_token']);

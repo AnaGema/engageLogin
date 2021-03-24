@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="user-roles-table">
-                        @if(!empty($systemUsers))
+                        @if(!empty($systemUsers) && $systemUsers->count() > 0)
                             <label class="data-title">Users & Roles</label>
                             <div class="mt-6">
                                 <table class="table table-dark">

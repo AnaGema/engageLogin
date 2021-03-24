@@ -64,13 +64,4 @@ class User extends Authenticatable
         return $this->hasMany(UserRoles::class, 'user_id', 'id')
             ->where('enabled',true);
     }
-
-    /**
-     * @param string $userId
-     * @return array
-     */
-    public function getUserRolesByUser(string $userId)
-    {
-        return DB::select('call get_user_roles_by_user(?)', [$userId]);
-    }
 }
