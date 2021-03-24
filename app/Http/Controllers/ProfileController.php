@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+    }
+
     /**
      * Gets the current logged user in the system.
      *
@@ -42,7 +46,7 @@ class ProfileController extends Controller
             ->where('is_admin', false)
             ->get();
 
-        if ($userData->is_admin) {
+        if (!empty($userData->is_admin) && $userData->is_admin) {
             return view('adminHome')
                 ->with('systemUsers', $systemUsers)
                 ->with('userData', $userData);
